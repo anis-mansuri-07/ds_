@@ -1,0 +1,174 @@
+// 1>add 2>delete 3>modify 4>simpl_search 5>binary_search 6>sort 7>Exit
+
+#include <stdio.h>
+int add(int arr[], int Inele);
+int Delete(int arr[], int Inele);
+int modify(int arr[], int Inele);
+void S_search(int arr[], int Inele);
+void Display(int arr[], int Inele);
+// void sort(int arr[],int Inele);
+
+int main()
+{
+    int arr[5], element, choice = 0, Inele = -1;
+    printf("1. Add \n2. delete \n3. Modify \n4. Simple Search \n5. Binary Search \n6. Sort \n7. Exit");
+
+    while (choice != 7)
+    {
+        printf("\nEnter Your Choice::  ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            Inele = add(arr, Inele);
+            break;
+        case 2:
+            Inele = Delete(arr, Inele);
+            break;
+        case 3:
+            modify(arr, Inele);
+            break;
+        case 4:
+            S_search(arr, Inele);
+            break;
+        case 5:
+            Display(arr, Inele);
+            break;
+            // case 6: sort(arr,Inele);break;
+
+        case 7:
+            printf("Thank You..");
+            break;
+
+        default:
+            printf("Entered wrong input\n");
+        }
+    }
+}
+
+int add(int arr[], int Inele)
+{
+
+    if (Inele == 4)
+    {
+        printf("Array is full\n");
+    }
+    else
+    {
+        Inele++;
+        // int i;
+        printf("Enter Element:: ");
+        scanf("%d", &arr[Inele]);
+        // arr[Inele] = i;
+        printf("Ele %d is added\n", arr[Inele]);
+    }
+    return Inele;
+}
+
+int Delete(int arr[], int Inele)
+{
+
+    int ele2 = Inele;
+    if (Inele == -1)
+    {
+        ele2++;
+        printf("Array is empty\n");
+    }
+    else
+    {
+        int i, k;
+        printf("Enter Element You want to delete:: ");
+        scanf("%d", &i);
+        for (int j = 0; j <= ele2; j++)
+        {
+            if (i == arr[j])
+            {
+                for (k = j; k <= Inele; k++)
+                {
+                    arr[k] = arr[k + 1];
+                }
+                Inele--;
+                j--;
+            }
+            // printf("%d from index %d is deleted\n",i,k);
+        }
+    }
+    // printf("\n\n\n\n");
+
+    if (Inele == ele2)
+        printf("element not found..\n");
+
+    return Inele;
+}
+
+int modify(int arr[], int Inele)
+{
+    int oldEle; // newEle;
+    if (Inele == -1)
+    {
+        printf("Array is empty..\n");
+    }
+    else
+    {
+        printf("Enter old element: ");
+        scanf("%d", &oldEle);
+        for (int i = 0; i <= Inele; i++)
+        {
+            if (arr[i] == oldEle)
+            {
+                printf("Enter new ele:: ");
+                scanf("%d", &arr[i]);
+            }
+        }
+    }
+    return 0;
+}
+
+void S_search(int arr[], int Inele)
+{
+    int s, count = 0;
+    if (Inele == -1)
+    {
+        printf("Array is empty..\n");
+    }
+    else
+    {
+        printf("Enter value for search in array::  ");
+        scanf("%d", &s);
+        for (int i = 0; i <= Inele; i++)
+        {
+            if (s == arr[i])
+            {
+                printf("found that %d is on %dth index\n", arr[i], i);
+                count++;
+            }
+        }
+        if (count == 0)
+        {
+            printf("Value is not there..\n");
+        }
+    }
+}
+
+void Display(int arr[], int Inele)
+{
+    if (Inele == -1)
+    {
+        printf("Array is empty..\n");
+    }
+    else
+    {
+        for (int i = 0; i <= Inele; i++)
+            printf("%d  ", arr[i]);
+    }
+}
+
+/*void sort(int arr[],int Inele){
+    for(int i;i<=(Inele+1);i++)
+    {
+        if(arr[i]>arr[i+1]){
+            arr[i]
+        }
+    }
+}*/
