@@ -4,7 +4,7 @@ int Delete(int arr[], int Inele);
 int modify(int arr[], int Inele);
 void S_search(int arr[], int Inele);
 void Display(int arr[], int Inele);
-// void sort(int arr[],int Inele);
+void sort(int arr[],int Inele);
 
 int main()
 {
@@ -33,12 +33,12 @@ int main()
         case 5:
             Display(arr, Inele);
             break;
-        case 6: 
+       /* case 6: 
             B_search(arr,Inele);
             break;
-       // case 7:
-        //    sort(arr,Inele);
-         //   break;
+    */  case 7:
+            sort(arr,Inele);
+            break;
         case 8:
             printf("Thank You..");
             break;
@@ -164,11 +164,23 @@ void Display(int arr[], int Inele)
     }
 }
 
-/*void sort(int arr[],int Inele){
-    for(int i;i<=(Inele+1);i++)
-    {
-        if(arr[i]>arr[i+1]){
-            arr[i]
+void sort(int arr[],int Inele){
+    int arr2[Inele],temp;
+    int Ele2 = Inele;
+    for(int i=0;i<=Ele2;i++){
+        arr2[i]=arr[i];
+    }
+    for(int j=0;j<=Ele2;j++){
+        if(arr2[j]>arr2[j+1]){
+            temp = arr2[j];
+            arr2[j] = arr2[j+1];
+            arr2[j+1]=temp;
+            //Ele2--;
+            j=0;
         }
     }
-}*/
+     for(int i=0;i<=Inele;i++){
+        printf("%d\n",arr2[i]);
+    }
+    
+}
