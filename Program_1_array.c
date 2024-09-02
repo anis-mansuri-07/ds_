@@ -4,6 +4,7 @@ int Delete(int arr[], int Inele);
 int modify(int arr[], int Inele);
 void S_search(int arr[], int Inele);
 void Display(int arr[], int Inele);
+void B_search(int arr[],int Inele);
 void sort(int arr[],int Inele);
 
 int main()
@@ -33,13 +34,22 @@ int main()
         case 5:
             Display(arr, Inele);
             break;
-       /* case 6: 
-            B_search(arr,Inele);
+        case 6: 
+            if(Inele==-1){
+              printf("Array is empty..\n");
+          }else{
+              B_search(arr,Inele);
+            }
+            
             break;
-    */  case 7:
-            sort(arr,Inele);
-            break;
-        case 8:
+         case 7:
+            if(Inele==-1){
+              printf("Array is empty..\n");
+          }else{
+              sort(arr,Inele);
+            }
+          break;
+         case 8:
             printf("Thank You..");
             break;
 
@@ -185,4 +195,63 @@ void sort(int arr[],int Inele){
         printf("%d ",arr2[i]);
     }
     printf("%d\n",arr2[Inele]);
+}
+
+
+void B_search(int arr[],int Inele){
+    
+    int arr2[Inele],temp,target;
+    printf("Enter value for search:: ");
+    scanf("%d",&target);
+    
+    
+
+    for(int i=0;i<=Inele;i++){
+        arr2[i]=arr[i];
+    }
+    // for sort
+   // printf("Sorted Array is\n");
+    for(int i=0;i<Inele;i++)
+    {
+        for(int j=i+1;j<=Inele;j++)
+        {
+            if(arr2[i]>arr2[j])
+            {
+                temp = arr2[i];
+                arr2[i]=arr2[j];
+                arr2[j]=temp;
+            }
+        }
+        
+    }
+   
+    
+    int left = 0 , count = 0;
+    int right = Inele;
+    
+    while (left <= right)
+    {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target)
+        {
+            printf("Found:: %d is at index %d\n",target,mid);
+            count++;
+            break;
+        }
+        else if (arr[mid] < target)
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid - 1;
+        }
+    }
+    if(count==0){
+        printf("%d is not there in array..\n",target);
+    }
+    
+    
+    
+    
 }
