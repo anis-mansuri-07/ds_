@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include<stdio.h>
 int add(int arr[], int Inele);
 int Delete(int arr[], int Inele);
 int modify(int arr[], int Inele);
@@ -166,21 +166,23 @@ void Display(int arr[], int Inele)
 
 void sort(int arr[],int Inele){
     int arr2[Inele],temp;
-    int Ele2 = Inele;
-    for(int i=0;i<=Ele2;i++){
+   // int Ele2 = Inele;
+    for(int i=0;i<=Inele;i++){
         arr2[i]=arr[i];
     }
-    for(int j=0;j<=Ele2;j++){
-        if(arr2[j]>arr2[j+1]){
-            temp = arr2[j];
-            arr2[j] = arr2[j+1];
-            arr2[j+1]=temp;
-            //Ele2--;
-            j=0;
+    // for sort
+    for(int i=0;i<Inele;i++)
+    {
+        for(int j=i+1;j<=Inele;j++)
+        {
+            if(arr2[i]>arr2[j])
+            {
+                temp = arr2[i];
+                arr2[i]=arr2[j];
+                arr2[j]=temp;
+            }
         }
+        printf("%d ",arr2[i]);
     }
-     for(int i=0;i<=Inele;i++){
-        printf("%d\n",arr2[i]);
-    }
-    
+    printf("%d\n",arr2[Inele]);
 }
