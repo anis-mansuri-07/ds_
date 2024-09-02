@@ -1,5 +1,3 @@
-// 1>add 2>delete 3>modify 4>simpl_search 5>binary_search 6>sort 7>Exit
-
 #include <stdio.h>
 int add(int arr[], int Inele);
 int Delete(int arr[], int Inele);
@@ -11,9 +9,9 @@ void Display(int arr[], int Inele);
 int main()
 {
     int arr[5], element, choice = 0, Inele = -1;
-    printf("1. Add \n2. delete \n3. Modify \n4. Simple Search \n5. Binary Search \n6. Sort \n7. Exit");
+    printf("1. Add \n2. delete \n3. Modify \n4. Simple Search \n5. Display \n6. Binary Search \n7. Sort \n8. Exit");
 
-    while (choice != 7)
+    while (choice != 8)
     {
         printf("\nEnter Your Choice::  ");
         scanf("%d", &choice);
@@ -35,9 +33,13 @@ int main()
         case 5:
             Display(arr, Inele);
             break;
-            // case 6: sort(arr,Inele);break;
-
-        case 7:
+        case 6: 
+            B_search(arr,Inele);
+            break;
+       // case 7:
+        //    sort(arr,Inele);
+         //   break;
+        case 8:
             printf("Thank You..");
             break;
 
@@ -74,30 +76,28 @@ int Delete(int arr[], int Inele)
     {
         ele2++;
         printf("Array is empty\n");
-    }
-    else
-    {
-        int i, k;
-        printf("Enter Element You want to delete:: ");
-        scanf("%d", &i);
-        for (int j = 0; j <= ele2; j++)
-        {
-            if (i == arr[j])
-            {
-                for (k = j; k <= Inele; k++)
-                {
-                    arr[k] = arr[k + 1];
+    }else{
+        int i;
+        printf("Enter Element You Want to delete..: ");
+        scanf("%d",&i);
+        for(int j=0;j<=Inele;j++){
+            if(arr[j]==i){
+                printf("%d is Deleted..\n",i);
+                for(int k=j;k<Inele;k++){
+                    arr[k] = arr[k+1];
                 }
                 Inele--;
                 j--;
+                ele2 = -2;
             }
-            // printf("%d from index %d is deleted\n",i,k);
         }
     }
-    // printf("\n\n\n\n");
-
-    if (Inele == ele2)
-        printf("element not found..\n");
+    
+    if(ele2==Inele){
+        printf("Element Not Found..\n");
+    }
+    
+    
 
     return Inele;
 }
