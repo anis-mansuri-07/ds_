@@ -146,7 +146,7 @@ void modify(){
                     
                     printf("Enter new element..");
                     scanf("%d",&ele);
-                    printf("Modified to %din stack 2\n",ele);
+                    printf("Modified to %d in stack 2\n",ele);
                     stack[i]=ele;
                     j++;
                     break;
