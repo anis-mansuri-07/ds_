@@ -127,8 +127,8 @@ void modify(){
                     scanf("%d",&ele);
                     printf("Modified to %d in stack 1\n",ele);
                     stack[i]=ele;
-                    j++;
-                    break;
+                    //j++;
+                    return;
                 }
             }
             
@@ -148,8 +148,8 @@ void modify(){
                     scanf("%d",&ele);
                     printf("Modified to %d in stack 2\n",ele);
                     stack[i]=ele;
-                    j++;
-                    break;
+                    //j++;
+                    return;
                 }
             }
             
