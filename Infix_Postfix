@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <string.h>
+
+int push(int i, int top, char arr[])
+{
+    top++;
+    arr[top] = arr[i];
+    return top;
+}
+
+int pop(int i, int top, char arr[])
+{
+    printf("%c", arr[top]);
+    top--;
+
+    return top;
+}
+
+int main()
+{
+    int i = 0;
+    int top = -1;
+    char arr[50];
+    // char arr[] = {"a+b-c*d*f/z/m-q+;"};
+    printf("Enter infix notion(End with ';'):: ");
+    scanf("%s", &arr);
+    // int max = strlen(arr);
+
+    int stack[50];
+
+    while (arr[i] != ';')
+    {
+        if ((arr[i] >= 'A' && arr[i] <= 'Z') || (arr[i] >= 'a' && arr[i] <= 'z'))
+        {
+            printf("%c", arr[i]);
+        }
+        else if (arr[i] == '+' || arr[i] == '-')
+        {
+            while (1)
+            {
+                if (arr[top] == '+' || arr[top] == '-' || arr[top] == '*' || arr[top] == '/')
+                {
+                    top = pop(i, top, arr);
+                    // pritnf("%c", arr[top--]);
+                    // continue;
+                }
+                else
+                {
+                    top = push(i, top, arr);
+                    break;
+                }
+            }
+        }
+        else if (arr[i] == '*' || arr[i] == '/')
+        {
+            while (1)
+            {
+                if (arr[top] == '*' || arr[top] == '/')
+                {
+                    top = pop(i, top, arr);
+                    // pritnf("%c", pop(arr[top--]));
+                    // continue;
+                }
+                else
+                {
+                    top = push(i, top, arr);
+                    break;
+                }
+            }
+        }
+
+        i++;
+        while (top != -1 && arr[i] == ';')
+        {
+            top = pop(i, top, arr);
+
+            // continue;
+        }
+    }
+}
