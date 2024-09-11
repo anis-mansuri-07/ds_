@@ -31,11 +31,12 @@ int main()
     {
         if(arr[i]=='(' || arr[i]==')'){
             if(arr[i]=='('){
-               top = pop(top, stack);
+               top = push(i, top, stack, arr);
             }else{
-                while(arr[i]!=')'){
+                while(stack[top]!='('){
                     top = pop(top, stack);
                 }
+                top--;
             }
         }else if ((arr[i] >= 'A' && arr[i] <= 'Z') || (arr[i] >= 'a' && arr[i] <= 'z'))
         {
