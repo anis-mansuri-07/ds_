@@ -104,7 +104,7 @@ void display()
 }
 
 void modify(){
-    int j,k,count=-1;
+    int j,k,count=1;
     if(top==-1){
         printf("Stack is empty..\n");
     }else{
@@ -117,16 +117,17 @@ void modify(){
                 scanf("%d",&k);
                 stack[i]=k;
                 printf("value modify from %d to %d\n",j,k);
-                break;
+                return;
+               // break;
             }
-            count++;
+            //count++;
         
         }
         
-        if(count==top){
+        //if(count==1){
         printf("Value %d is not found in stack..\n",j);
             
         }
     }
     
-}
+
