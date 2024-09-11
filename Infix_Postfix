@@ -1,16 +1,15 @@
 #include <stdio.h>
-#include <string.h>
 
-int push(int i, int top, char arr[])
+int push(int i, int top, char stack[], char arr[])
 {
     top++;
-    arr[top] = arr[i];
+    stack[top] = arr[i];
     return top;
 }
 
-int pop(int i, int top, char arr[])
+int pop(int top, char stack[])
 {
-    printf("%c", arr[top]);
+    printf("%c", stack[top]);
     top--;
 
     return top;
@@ -26,11 +25,19 @@ int main()
     scanf("%s", &arr);
     // int max = strlen(arr);
 
-    int stack[50];
+    char stack[50];
 
-    while (arr[i] != ';')
+    while (arr[i] != '\0')
     {
-        if ((arr[i] >= 'A' && arr[i] <= 'Z') || (arr[i] >= 'a' && arr[i] <= 'z'))
+        if(arr[i]=='(' || arr[i]==')'){
+            if(arr[i]=='('){
+               top = pop(top, stack);
+            }else{
+                while(arr[i]!=')'){
+                    top = pop(top, stack);
+                }
+            }
+        }else if ((arr[i] >= 'A' && arr[i] <= 'Z') || (arr[i] >= 'a' && arr[i] <= 'z'))
         {
             printf("%c", arr[i]);
         }
@@ -38,15 +45,15 @@ int main()
         {
             while (1)
             {
-                if (arr[top] == '+' || arr[top] == '-' || arr[top] == '*' || arr[top] == '/')
+                if (stack[top] == '+' || stack[top] == '-' || stack[top] == '*' || stack[top] == '/')
                 {
-                    top = pop(i, top, arr);
+                    top = pop(top, stack);
                     // pritnf("%c", arr[top--]);
                     // continue;
                 }
                 else
                 {
-                    top = push(i, top, arr);
+                    top = push(i, top, stack, arr);
                     break;
                 }
             }
@@ -55,26 +62,26 @@ int main()
         {
             while (1)
             {
-                if (arr[top] == '*' || arr[top] == '/')
+                if (stack[top] == '*' || stack[top] == '/')
                 {
-                    top = pop(i, top, arr);
+                    top = pop(top, stack);
                     // pritnf("%c", pop(arr[top--]));
                     // continue;
                 }
                 else
                 {
-                    top = push(i, top, arr);
+                    top = push(i, top, stack, arr);
                     break;
                 }
             }
         }
-
         i++;
-        while (top != -1 && arr[i] == ';')
+        while (top != -1 && arr[i] == '\0')
         {
-            top = pop(i, top, arr);
+            top = pop(top, stack);
 
             // continue;
         }
     }
+    // printf("%s", arr);
 }
