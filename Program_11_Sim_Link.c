@@ -18,7 +18,7 @@ void insert(struct node **head){
     }else{
         printf("Enter ele:  ");
         scanf("%d",&ele);
-        if(head==NULL){
+        if(*head==NULL){
             new->data=ele;
             new->next=NULL;
             *head = new;
